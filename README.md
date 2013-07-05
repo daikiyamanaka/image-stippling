@@ -21,3 +21,7 @@ image stippling by poisson disk sampling
 ###usage
 `Usage: Stippling [input_image] [output_images]`
 
+###sample
+
+![input](test/lena.png)
+![output](test/lena_stip.png)
