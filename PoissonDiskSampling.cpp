@@ -16,38 +16,6 @@ PoissonDiskSampling::PoissonDiskSampling(int width, int height, double pitch):wi
 PoissonDiskSampling::~PoissonDiskSampling(){
 
 }
-/*
-void PoissonDiskSampling::sample(std::vector<Eigen::Vector3d> &points){
-	points.resize(0);
-	int count = 0;
-	std::vector<Node>::iterator n_it;	
-	std::vector<int> neighbors;	
-	int max = 100000;
-	std::vector<Node> active_list;
-
-	while(count < max){
-		Eigen::Vector3d point = genRandomPoint();
-		int pid_x = point[0]/pitch_;
-		int pid_y = point[1]/pitch_;
-		int n_id = pid_x+pid_y*width_;
-		n_it = nodes.begin()+ n_id;
-		neighbors = calcNeighborIndex(*n_it, f(n_it->val));
-
-		std::vector<int>::iterator id_it;
-		bool free = true;
-		for(id_it = neighbors.begin(); id_it != neighbors.end(); id_it++){
-			if((nodes.begin()+*id_it)->visited == true){
-				free = false;
-			}
-		}
-		if(free){
-			points.push_back(point);			
-			nodes.at(n_id).visited = true;
-		}
-		count ++;	
-	}
-}
-*/
 
 void PoissonDiskSampling::sample(std::vector<Eigen::Vector3d> &points){
 	points.resize(0);
@@ -62,7 +30,6 @@ void PoissonDiskSampling::sample(std::vector<Eigen::Vector3d> &points){
 	insertPoint(nodes, points, init_point);
 
 	while(active_list.size() != 0){
-
 		Eigen::Vector3d point = active_list[0];
 		bool is_valid = false;
 		int pid_x = point[0]/pitch_;
@@ -82,31 +49,9 @@ void PoissonDiskSampling::sample(std::vector<Eigen::Vector3d> &points){
 			}
 		}		
 
-		if(!is_valid){
-			//active_list.erase(active_list.begin());
+		if(!is_valid){		
 			active_list.pop_front();
 		}
-		//int pid_x = point[0]/pitch_;
-		//int pid_y = point[1]/pitch_;
-		//int n_id = pid_x+pid_y*width_;
-		//n_it = nodes.begin()+ n_id;
-		//neighbors = calcNeighborIndex(*n_it, f(n_it->val));
-
-/*
-		std::vector<int>::iterator id_it;
-		bool free = true;
-		for(id_it = neighbors.begin(); id_it != neighbors.end(); id_it++){
-			if((nodes.begin()+*id_it)->visited == true){
-				free = false;
-			}
-		}
-		if(free){
-			points.push_back(point);			
-			nodes.at(n_id).visited = true;
-
-		}
-		count ++;	
-		*/
 	}
 }
 
@@ -122,12 +67,10 @@ void PoissonDiskSampling::insertPoint(std::vector<Node> &nodes, std::vector<Eige
 void PoissonDiskSampling::setDensityFunc(const std::vector<double> &dfunc){
 	assert((int)dfunc.size() == width_*height_);
 	std::vector<double>::const_iterator d_it = dfunc.begin();
-	std::cout << nodes.size() << " "<< dfunc.size() << std::endl;
 	for(std::vector<Node>::iterator it = nodes.begin(); it != nodes.end(); ++it, ++d_it){
 		it->val = *d_it;
 	}
 }
-
 void PoissonDiskSampling::setConverter(boost::function<double(double)> _f){	
 	f = _f;
 }

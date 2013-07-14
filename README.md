@@ -1,7 +1,8 @@
 ImageStippling
 =======================
-image stippling by poisson disk sampling
+image stippling by poisson disk sampling.
 
+The details are [here](http://daiki-yamanaka.hatenablog.com/entry/2013/07/13/163657).
 
 ###build
 

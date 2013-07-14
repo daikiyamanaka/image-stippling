@@ -10,7 +10,7 @@ set(CAIRO_LIB /usr/local/lib/libcairo.dylib)
 ######################
 # Compiler flags
 ######################
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -Wall -Wextra -pedantic")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -O2 -Wall -Wextra -pedantic")
 
 ##########################
 # opencv

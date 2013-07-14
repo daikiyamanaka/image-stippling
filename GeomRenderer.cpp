@@ -101,8 +101,8 @@ void GeomRenderer::save(std::string filename){
 void GeomRenderer::init(){
 	surface = NULL;
 	cr = NULL;
-	point_size = 1.0;
-	line_size = 1.0;
-  p_color = Eigen::Vector3d(1.0, 0.2, 0.2);
-  p_alpha = 1.0;
+	point_size = 2.0;
+	line_size = 2.0;
+	p_color = Eigen::Vector3d(1.0, 0.2, 0.2);
+	p_alpha = 1.0;
 }
