@@ -4,7 +4,7 @@ image stippling by poisson disk sampling.
 
 The details are [here](http://daiki-yamanaka.hatenablog.com/entry/2013/07/13/163657).
 
-###build
+### build
 
 `mkdir build`
 
@@ -14,15 +14,15 @@ The details are [here](http://daiki-yamanaka.hatenablog.com/entry/2013/07/13/163
 
 `make`
 
-###requirement
+### requirement
 1.OpenCV
 2.Eigen
 3.Cairo
 
-###usage
+### usage
 `Usage: Stippling [input_image] [output_images]`
 
-###sample
+### sample
 
 ![input](test/lena.png)
 ![output](test/lena_stip.png)
